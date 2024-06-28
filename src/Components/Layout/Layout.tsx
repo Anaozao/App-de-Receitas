@@ -3,18 +3,20 @@ import Header from '../Header/Header';
 import styles from './Layout.module.css'
 import { useEffect, useState } from 'react';
 import Footer from '../Footer/Footer';
+import { ReduxState } from '../../types';
+import { useSelector } from 'react-redux';
 
 function Layout() {
   const [layoutClass, setLayoutClass] = useState(styles.layout)
-  const { pathname } = useLocation()
+  const { url } = useSelector((state: ReduxState) => state.generalReducer);
 
   useEffect(() => {
-    if (pathname === '/comidas' || pathname === '/drinks') {
+    if (url === '/comidas' || url === '/drinks') {
       setLayoutClass(styles.layout)
     } else {
       setLayoutClass(styles.layout2)
     }
-  }, [pathname])
+  }, [url])
 
   return (
     <div className={layoutClass}>
@@ -23,7 +25,7 @@ function Layout() {
         <Outlet />
       </main>
 
-      <Footer />
+      {url === '/comidas' || url === '/drinks' && <Footer />}
     </div>
   )
 }

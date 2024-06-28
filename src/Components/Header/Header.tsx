@@ -11,22 +11,25 @@ import SearchBar from './SearchBar/SearchBar';
 
 function Header() {
   const [headerClass, setHeaderClass] = useState(styles.header);
+  const [headerTopClass, setHeaderTopClass] = useState(styles.headerTop)
   const [isSearch, setIsSearch] = useState(false)
   const navigate = useNavigate()
-  const { title } = useSelector((state: ReduxState) => state.headerTitleReducer)
+  const { title, url } = useSelector((state: ReduxState) => state.generalReducer)
   const { pathname } = useLocation()
 
   useEffect(() => {
-    if (pathname === '/comidas' || pathname === '/drinks') {
+    if (url === '/comidas' || pathname === '/drinks') {
       setHeaderClass(styles.header)
+      setHeaderTopClass(styles.headerTop)
     } else {
       setHeaderClass(styles.header2)
+      setHeaderTopClass(styles.headerTop2)
     }
-  }, [])
+  }, [url])
 
   return (
     <header className={headerClass}>
-      <div className={styles.headerTop}>
+      <div className={headerTopClass}>
         <button
         className={styles.headerTopBtns}
         onClick={() => navigate('/perfil')}
@@ -43,6 +46,7 @@ function Header() {
           </button>
         ) : (
           <button
+            onClick={() => navigate('/comidas')}
             className={styles.headerTopBtns}
           >
             <IoHome className={styles.headerIcons}/>

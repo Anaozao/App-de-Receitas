@@ -12,8 +12,9 @@ export type ReduxState = {
     email: string,
     password: string
   }
-  headerTitleReducer: {
+  generalReducer: {
     title: string
+    url: string
   }
   recipesReducer: {
     recipes: MealType[] | DrinkType[]

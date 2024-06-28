@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { setRecipesByName, setTitle } from "../../Redux/Actions";
+import { setRecipesByName, setTitle, setUrl } from "../../Redux/Actions";
 import { Dispatch, DrinkType, MealType, ReduxState } from "../../types";
 import RecipeCard from "../../Components/RecipeCard/RecipeCard";
 import styles from './RecipesPage.module.css';
@@ -13,6 +13,7 @@ function RecipesPage() {
   const { recipes, loading } = useSelector((state: ReduxState) => state.recipesReducer)
 
   useEffect(() => {
+    dispatch(setUrl(pathname))
     if (pathname === '/comidas') {
       dispatch(setTitle('Comidas'))
       dispatch(setRecipesByName('themealdb', ''))

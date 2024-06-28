@@ -1,0 +1,47 @@
+.basicInfo {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.image {
+  border-radius: 10px;
+  width: 400px;
+}
+
+.favAndShare {
+  align-items: center;
+  display: flex;
+  gap: 3px;
+  flex-direction: column;
+}
+
+.btnsDiv {
+  display: flex;
+  gap: 3px;
+}
+
+.topBtns {
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  height: 35px;
+  width: 35px;
+}
+
+.icons {
+  font-size: 20px;
+}
+
+.ingredientsDiv {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 20px;
+  width: 100%;
+}

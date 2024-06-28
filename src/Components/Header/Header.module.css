@@ -8,6 +8,13 @@
 
 .header2 {
   align-items: center;
+  background-color: yellow;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.headerTop2 {
   display: flex;
   justify-content: space-evenly;
   width: 100%;
