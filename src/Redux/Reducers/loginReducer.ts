@@ -1,5 +1,5 @@
 import { AnyAction } from "redux"
-import { LOGIN_ACTION } from "../Actions/loginAction"
+import { LOGIN_ACTION } from "../Actions"
 
 const INITIAL_STATE = {
   email: '',

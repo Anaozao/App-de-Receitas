@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import styles from './LoginForm.module.css'
 import { useDispatch } from 'react-redux';
-import { setLoginInfos } from '../../Redux/Actions/loginAction';
+import { setLoginInfos } from '../../Redux/Actions';
 import { useNavigate } from 'react-router-dom';
 import useLoacalStorage from '../../Hooks/useLoacalStorage';
+import { GiHotMeal } from 'react-icons/gi';
 
 function LoginForm() {
   const [formInfos, setFormInfos] = useState({email: '', password: ''})
@@ -39,6 +40,7 @@ function LoginForm() {
 
   return (
     <form className={styles.form}>
+      <p className={styles.title}>Login</p>
       <div>
         <label>
           <input
@@ -65,6 +67,7 @@ function LoginForm() {
       </div>
       <div>
         <button
+          className={styles.loginBtn}
           disabled={validadeForm()}
           onClick={handleLogin}
         >

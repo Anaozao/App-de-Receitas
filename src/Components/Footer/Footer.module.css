@@ -1,0 +1,16 @@
+.footer {
+  align-items: center;
+  background-color: yellow;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.icons {
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.button {
+  background: none;
+  border: none;
+}

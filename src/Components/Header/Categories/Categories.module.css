@@ -1,0 +1,39 @@
+.categoriesSection {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.categoriesDiv {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 80%;
+}
+
+.categories {
+  background-color: brown;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  height: 25px;
+  width: 100px;
+}
+
+@media ( max-width : 600px ) {
+  .categoriesDiv {
+    display: grid;
+    gap: 0px;
+    grid-template-columns: 50% 50%;
+    justify-items: center;
+  }
+
+  .categories {
+    font-size: 14px;
+    width: 80px;
+  }
+}

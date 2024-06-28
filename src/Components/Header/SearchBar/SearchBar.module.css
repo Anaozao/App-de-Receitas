@@ -1,0 +1,43 @@
+.searchSection {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+.searchInput {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 25px;
+  padding-left: 5px;
+  width: 200px;
+}
+
+.radiosContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.radioDiv {
+  align-items: center;
+  display: flex;
+  gap: 5px;
+}
+
+.searchBtn {
+  background-color: brown;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 25px;
+  width: 100px;
+}

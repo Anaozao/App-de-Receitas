@@ -1,8 +1,11 @@
 import LoginForm from "../../Components/LoginForm/LoginForm";
+import styles from './Login.module.css';
 
 function Login() {
   return (
-    <LoginForm />
+    <section className={styles.loginPage}>
+      <LoginForm />
+    </section>
   )
 }
 

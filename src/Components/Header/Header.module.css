@@ -1,0 +1,50 @@
+.header {
+  background-color: yellow;
+  display: grid;
+  grid-template-rows: 20% 80%;
+  align-items: center;
+  width: 100%;
+}
+
+.header2 {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.headerTop {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.headerTitle {
+  font-size: 30px;
+}
+
+.headerTopBtns {
+  background: none;
+  border: none;
+}
+
+.headerIcons {
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.headerBottom {
+  background-color: rgb(255, 187, 0);
+  border-top: 1px solid black;
+  box-shadow: 2px 2px 5px black;
+  height: 100%;
+}
+
+@media ( max-width : 600px ) {
+  .headerTitle {
+    font-size: 25px;
+  }
+
+  .headerIcons {
+    font-size: 25px;
+  }
+}

@@ -1,0 +1,59 @@
+.card {
+  background-color: rgba(255, 228, 196, 0.5);
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 320px;
+  justify-content: center;
+  padding: 10px;
+  text-align: center;
+  width: 250px;
+
+  &:hover {
+    background-color: bisque;
+  }
+}
+
+.link {
+  align-items: center;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 20px;
+  gap: 15px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.image {
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.nameDiv {
+  height: 25%;
+  overflow: hidden;
+  width: 100%;;
+}
+
+.title {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media ( max-width : 600px ) {
+  .card {
+    height: 200px;
+    width: 160px;
+  }
+
+  .image {
+    width: 120px;
+  }
+}
