@@ -27,6 +27,7 @@ function RecipesPage() {
   return (
     <section className={styles.recipesPage}>
       {loading &&  <ReactLoading type={"spinningBubbles"} color={'black'} height={200} width={200} />}
+      {!recipes && <p>Nenhuma receita encontrada!</p>}
       {pathname === '/comidas' && (
         recipes && (recipes as MealType[]).map((recipe) => (
           <RecipeCard

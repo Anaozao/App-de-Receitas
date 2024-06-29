@@ -36,6 +36,10 @@ function SearchBar() {
         dispatch(setRecipesByIngredient(param, search))
         break;
       default:
+        if (search.length > 1) {
+          alert('Digine apenas um caractere para esse filtro de busca')
+          return;
+        }
         dispatch(setRecipesByLetter(param, search))    
     }
   }

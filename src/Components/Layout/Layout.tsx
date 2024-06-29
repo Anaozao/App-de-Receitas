@@ -21,11 +21,11 @@ function Layout() {
   return (
     <div className={layoutClass}>
         <Header />
-      <main>
+      <main className={styles.main}>
         <Outlet />
       </main>
 
-      {url === '/comidas' || url === '/drinks' && <Footer />}
+      {(url === '/comidas' || url === '/drinks') && <Footer />}
     </div>
   )
 }

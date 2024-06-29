@@ -139,3 +139,9 @@ export type DrinkType = {
   dateModified: string
   [key: string]: string
 };
+
+export type RecType = {
+  title: string,
+  image: string,
+  id: string
+}

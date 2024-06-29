@@ -1,9 +1,15 @@
+.detailsPage {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .basicInfo {
   align-items: center;
   display: flex;
   flex-direction: column;
   margin-top: 20px;
-  width: 100%;
 }
 
 .image {
@@ -11,11 +17,21 @@
   width: 400px;
 }
 
+.ingredientTitle {
+  font-size: 25px;
+}
+
+.ingredient {
+  font-size: 15px;
+}
+
 .favAndShare {
   align-items: center;
   display: flex;
   gap: 3px;
   flex-direction: column;
+  margin-top: 10px;
+  max-width: 100%;
 }
 
 .btnsDiv {
@@ -43,5 +59,66 @@
   flex-direction: column;
   gap: 5px;
   margin-top: 20px;
-  width: 100%;
+}
+
+.videoDiv {
+  margin-top: 20px;
+}
+
+.recsDiv {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  overflow-x: scroll;
+  width: 500px;
+  max-width: 500px;
+}
+
+@media ( min-width : 600px ) {
+  .recsDiv::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .recsDiv::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  .recsDiv::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  .recsDiv::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+.recImg {
+  width: 250px;
+}
+
+.recLink {
+  color: black;
+  text-align: center;
+  text-decoration: none;
+}
+
+@media ( max-width : 600px ) {
+
+  .image {
+    width: 300px;
+  }
+
+  .video {
+    width: 300px;
+  }
+
+  .recsDiv {
+    overflow: auto;
+    width: 300px;
+  }
+
+  .recImg {
+    width: 150px;
+  }
 }
