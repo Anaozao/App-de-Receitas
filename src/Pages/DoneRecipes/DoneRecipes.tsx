@@ -11,6 +11,7 @@ function DoneRecipes() {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const [doneRecipes, setDoneRecipes] = useState<Recipe[]>([]);
+  const [buttonClass, setButtonClass] = useState('all')
 
   useEffect(() => {
     dispatch(setTitle('Receitas Feitas'))
@@ -18,21 +19,45 @@ function DoneRecipes() {
     const { getItem } = useLoacalStorage();
     setDoneRecipes(getItem('doneRecipes'));
   }, []);
+
+  const handleType = (type: string) => {
+    const { getItem } = useLoacalStorage()
+    const all: Recipe[] = getItem('doneRecipes');
+    const meals = all.filter((rec) => rec.type === 'comida')
+    const drinks = all.filter((rec) => rec.type === 'drink')
+    switch (type) {
+      case 'todas':
+      setDoneRecipes(all)
+      setButtonClass('all')
+      break;
+      case 'comidas':
+        setButtonClass('meals')
+        setDoneRecipes(meals)
+        break;
+      default:
+        setButtonClass('drinks')
+        setDoneRecipes(drinks);
+    }
+  }
+
   return (
     <section className={styles.donePage}>
       <div className={styles.topBtnsDiv}>
         <button
-          className={styles.topBtns}
+          onClick={() => handleType('todas')}
+          className={`${styles.topBtns} ${buttonClass === 'all' && styles.selected}`}
           >
             Todas
           </button>
         <button
-          className={styles.topBtns}
+          onClick={() => handleType('comidas')}
+          className={`${styles.topBtns} ${buttonClass === 'meals' && styles.selected}`}
         >
           Comidas
         </button>
         <button
-          className={styles.topBtns}
+          onClick={() => handleType('drinks')}
+          className={`${styles.topBtns} ${buttonClass === 'drinks' && styles.selected}`}
         >
           Drinks
         </button>

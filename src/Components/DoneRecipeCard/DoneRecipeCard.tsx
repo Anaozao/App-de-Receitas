@@ -21,7 +21,7 @@ function DoneRecipeCard({ area, category, doneDate, id, image, tags, title }: Do
           <p>{category}</p>
           <p>{area}</p>
           <p>{tags}</p>
-          <p>{doneDate}</p>
+          <p>Finalizado em: {doneDate}</p>
         </div>
     </div>
   );

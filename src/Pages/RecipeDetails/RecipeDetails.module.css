@@ -115,6 +115,10 @@
   left: 0;
   position: fixed;
   right: 0;
+
+  &:active {
+    background-color: rgb(202, 33, 33);
+  }
 }
 
 @media ( max-width : 600px ) {

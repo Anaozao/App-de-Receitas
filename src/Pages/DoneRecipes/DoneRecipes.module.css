@@ -34,3 +34,7 @@
   height: 30px;
   width: 100px;
 }
+
+.selected {
+  background-color: rgb(255, 72, 0);
+}
