@@ -1,8 +1,8 @@
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import styles from './RecipeDetails.module.css';
 import { useEffect, useState } from 'react';
 import { DrinkType, MealType, RecType } from '../../types';
-import { fetchByName, fetchDetails } from '../../Utils/API';
+import { fetchDetails } from '../../Utils/API';
 import { useDispatch } from 'react-redux';
 import { setTitle, setUrl } from '../../Redux/Actions';
 import { MdFavoriteBorder } from "react-icons/md";
@@ -11,48 +11,40 @@ import { IoShareSocial } from 'react-icons/io5';
 import ReactLoading from 'react-loading';
 import useLoacalStorage from '../../Hooks/useLoacalStorage';
 import { Link } from 'react-router-dom';
+import { getRecs, handleFavorite, handleShare, newRecipe, setIsFavorite } from '../../Utils/functions';
 
 function RecipeDetails() {
   const { pathname } = useLocation();
-  const [copyMessage, setCopyMessage] = useState('')
-  const { id } = useParams()
-  const [recipe, setRecipe] = useState<DrinkType | MealType>()
-  const [recomendations, setRecomendations] = useState<RecType[]>()
-  const [loading, setLoading] = useState(false)
-  const [isFav, setIsFav] = useState(false)
-  const dispatch = useDispatch()
-
-  const setFavorite = (id: string) => {
-    const { getItem } = useLoacalStorage();
-    const favorites: DrinkType[] | MealType[] = getItem('favorites');
-    const isFavorite = favorites.find((fav) => fav.id === id);
-    if (isFavorite) {
-      setIsFav(true)
-      return;
-    }
-    setIsFav(false)
-  }
-
-  const getRecs = async () => {
-    const param = pathname.includes('comidas') ? 'thecocktaildb' : 'themealdb';
-    const type = pathname.includes('comidas') ? 'drinks' : 'meals';
-    const response = await fetchByName(param, '')
-    // console.log(response[type]);
-    
-    const recs = response[type].slice(0, 6)
-    const newRecs = recs.map((rec: MealType | DrinkType) => (
-      {
-        title: rec.strMeal || rec.strDrink,
-        image: rec.strMealThumb || rec.strDrinkThumb,
-        id: rec.idMeal || rec.idDrink,
-      }
-    ))
-    
-    setRecomendations(newRecs)
-  }
+  const [copyMessage, setCopyMessage] = useState('');
+  const { id } = useParams();
+  const [recipe, setRecipe] = useState<DrinkType | MealType>();
+  const [recomendations, setRecomendations] = useState<RecType[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [isFav, setIsFav] = useState(false);
+  const [buttonText, setButtonText] = useState('Começar receita');
+  const [isInProgress, setIsInProgress] = useState(false)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    setFavorite(id!)
+    const { getItem } = useLoacalStorage();
+    const inProgress = getItem('inProgress');
+    const idparam = pathname.includes('comidas') ? 'idMeal' : 'idDrink'
+    const find = inProgress.find((item: MealType | DrinkType) => item[idparam] === id)
+    setButtonText(find ? 'Continuar receita' : 'Começar receita')
+  }, [recipe])
+
+
+  useEffect(() => {
+    const { getItem } = useLoacalStorage();
+    const recipesInProgress: [] = getItem('inProgress');
+    const verify = recipesInProgress.find((item) => newRecipe(item).id === id)
+    if (!verify) {
+      setIsInProgress(false)
+    } else {
+      setIsInProgress(true)
+    }
+    setIsFavorite(id!, setIsFav)
     dispatch(setUrl(pathname))
     dispatch(setTitle('Detalhes da receita'))
     const getRecipe = async () => {
@@ -63,7 +55,7 @@ function RecipeDetails() {
       setRecipe(response[type][0]);
       setLoading(false)
     }
-    getRecs()
+    getRecs(pathname, setRecomendations)
     getRecipe()
     window.scrollTo(0, 0);
   }, [pathname])
@@ -76,43 +68,18 @@ function RecipeDetails() {
   .filter((key) => key.includes('Measure'))
   .filter((measure) => recipe[measure])
 
-  const newRecipe = () => {
-    return {
-      title: recipe?.strMeal || recipe?.strDrink,
-      image: recipe?.strMealThumb || recipe?.strDrinkThumb,
-      category: recipe?.strCategory || '',
-      description: recipe?.strInstructions,
-      video: recipe?.strYoutube ? `https://www.youtube.com/embed/${recipe?.strYoutube.split('=')[1]}` : undefined,
-      id: recipe?.idDrink || recipe?.idMeal,
-    }
-  }
-  
-  const handleShare = async () => {
-    navigator.clipboard.writeText(`${pathname}`)
-    setCopyMessage('Link copiado')
-    setTimeout(() => {
-      setCopyMessage('')
-    }, 3000)
-  }
-
-  const handleFavorite = (id: string) => {
-    const { getItem, setItem } = useLoacalStorage()
-    const favorites: DrinkType[] | MealType[] = getItem('favorites')
-    const isFavorite = favorites.find((fav) => fav.id === id);
-    
-    
-    if (isFavorite) {
-      setIsFav(false)
-      const newFavs = favorites
-        .filter((fav) => fav.id !== id)
-      setItem('favorites', newFavs )
+  const handleStart = () => {
+    const url = pathname.includes('comidas') ? `/comidas/${id}/em-progresso` : `/drinks/${id}/em-progresso`;
+    const { setItem, getItem } = useLoacalStorage();
+    const inProgressRecipes = getItem('inProgress');
+    if (isInProgress) {
+      navigate(url);
       return;
     }
-    setIsFav(true)
-    const item = newRecipe()
-    setItem('favorites', [...favorites, item ])
+    setItem('inProgress', [...inProgressRecipes, recipe])
+    navigate(url);
   }
-  
+
   return (
     <section className={styles.detailsPage}>
       {loading && <ReactLoading type={'spinningBubbles'} color={'black'} height={100} width={100} />}
@@ -121,25 +88,25 @@ function RecipeDetails() {
           <div className={styles.basicInfo}>
             <img
               className={styles.image}
-              src={newRecipe().image}
+              src={newRecipe(recipe).image}
               alt=""
             />
             <h1
               className={styles.title}
             >
-              {newRecipe().title}
+              {newRecipe(recipe).title}
             </h1>
-            <p>{newRecipe().category}</p>
+            <p>{newRecipe(recipe).category}</p>
             <div className={styles.favAndShare}>
               <div className={styles.btnsDiv}>
                 <button
-                  onClick={() => handleFavorite(newRecipe().id!)}
+                  onClick={() => handleFavorite(id!, setIsFav, newRecipe(recipe))}
                   className={styles.topBtns}
                 >
                   {isFav ? <MdFavorite className={styles.icons}/> : <MdFavoriteBorder className={styles.icons}/>}
                 </button>
                 <button
-                  onClick={handleShare}
+                  onClick={() => handleShare(pathname, setCopyMessage)}
                   className={styles.topBtns}
                 >
                   <IoShareSocial className={styles.icons}/>
@@ -162,7 +129,7 @@ function RecipeDetails() {
           {pathname.includes('comidas') && (
             <div className={styles.videoDiv}>
               <iframe
-                src={newRecipe().video}
+                src={newRecipe(recipe).video}
                 width="560"
                 height="315"
                 className={styles.video}
@@ -187,6 +154,16 @@ function RecipeDetails() {
                 </div>
               </Link>
             ))}
+          </div>
+          <div
+            className={styles.startBtnDiv}
+          >
+            <button
+              onClick={handleStart}
+              className={styles.startBtn}
+            >
+              {buttonText}
+            </button>
           </div>
         </>
       )}
