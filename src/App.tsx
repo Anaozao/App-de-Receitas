@@ -4,6 +4,7 @@ import RecipesPage from "./Pages/RecipesPage/RecipesPage"
 import Layout from "./Components/Layout/Layout"
 import RecipeDetails from "./Pages/RecipeDetails/RecipeDetails"
 import InProgress from "./Pages/InProgress/InProgress"
+import DoneRecipes from "./Pages/DoneRecipes/DoneRecipes"
 
 function App() {
 
@@ -19,6 +20,9 @@ function App() {
         <Route index element={<RecipesPage />}/>
         <Route path="/drinks/:id" element={<RecipeDetails />}/>
         <Route path="/drinks/:id/em-progresso" element={<InProgress />}/>
+      </Route>
+      <Route path="/receitas-finalizadas" element={<Layout />}>
+        <Route index element={<DoneRecipes />}/>
       </Route>
     </Routes>
   )

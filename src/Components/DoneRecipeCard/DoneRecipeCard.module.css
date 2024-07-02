@@ -1,0 +1,31 @@
+.card {
+  align-items: center;
+  background-color: rgba(247, 222, 0, 0.226);
+  box-shadow: 1px 1px 5px black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  height: 450px;
+  padding: 20px 0;
+  width: 300px;
+}
+
+.image {
+  border-radius: 10px;
+  width: 250px;
+}
+
+.title {
+  font-size: 25px;
+}
+
+.infos {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 18px;
+
+}

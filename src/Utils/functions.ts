@@ -12,9 +12,13 @@ import { fetchByName } from "./API";
     description: string | undefined;
     video: string | undefined;
     id: string | undefined;
+    type: string;
+    area: string;
+    tags: string;
+    doneDate?: string;
   }
 
-export const newRecipe = (recipe: DrinkType | MealType) => {
+export const newRecipe = (recipe: DrinkType | MealType, doneDate?: string) => {
   return {
     title: recipe?.strMeal || recipe?.strDrink,
     image: recipe?.strMealThumb || recipe?.strDrinkThumb,
@@ -22,6 +26,10 @@ export const newRecipe = (recipe: DrinkType | MealType) => {
     description: recipe?.strInstructions,
     video: recipe?.strYoutube ? `https://www.youtube.com/embed/${recipe?.strYoutube.split('=')[1]}` : undefined,
     id: recipe?.idDrink || recipe?.idMeal,
+    type: recipe.idDrink ? 'drink' : 'comida',
+    tags: recipe?.strTags || '',
+    area: recipe?.strArea || '',
+    doneDate,
   }
 }  
 

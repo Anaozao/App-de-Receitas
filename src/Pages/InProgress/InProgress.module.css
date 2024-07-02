@@ -63,6 +63,7 @@
   flex-direction: column;
   gap: 5px;
   margin-top: 20px;
+  margin-bottom: 50px;
 }
 
 .videoDiv {
@@ -79,45 +80,22 @@
   max-width: 500px;
 }
 
-@media ( min-width : 600px ) {
-  .recsDiv::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  .recsDiv::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-  
-  .recsDiv::-webkit-scrollbar-thumb {
-    background: #888;
-  }
-  
-  .recsDiv::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-}
-
-.recImg {
-  width: 250px;
-}
-
-.recLink {
-  color: black;
-  text-align: center;
-  text-decoration: none;
-}
-
-.startBtn {
+.finishBtn {
   background-color: brown;
   border: solid 1px black;
   bottom: 0;
+  color: white;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 700;
-  height: 30px;
+  height: 35px;
   left: 0;
   position: fixed;
   right: 0;
+
+  &:disabled {
+    background-color: rgba(165, 42, 42, 0.664);
+  }
 }
 
 @media ( max-width : 600px ) {
@@ -137,5 +115,10 @@
 
   .recImg {
     width: 150px;
+  }
+
+  .finishBtn {
+    height: 30px;
+    font-size: 18px;
   }
 }

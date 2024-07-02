@@ -11,7 +11,7 @@ import { IoShareSocial } from 'react-icons/io5';
 import ReactLoading from 'react-loading';
 import useLoacalStorage from '../../Hooks/useLoacalStorage';
 import { Link } from 'react-router-dom';
-import { getRecs, handleFavorite, handleShare, newRecipe, setIsFavorite } from '../../Utils/functions';
+import { Recipe, getRecs, handleFavorite, handleShare, newRecipe, setIsFavorite } from '../../Utils/functions';
 
 function RecipeDetails() {
   const { pathname } = useLocation();
@@ -37,8 +37,8 @@ function RecipeDetails() {
 
   useEffect(() => {
     const { getItem } = useLoacalStorage();
-    const recipesInProgress: [] = getItem('inProgress');
-    const verify = recipesInProgress.find((item) => newRecipe(item).id === id)
+    const recipesInProgress: Recipe[] = getItem('inProgress');
+    const verify = recipesInProgress.find((item) => item.id === id)
     if (!verify) {
       setIsInProgress(false)
     } else {
@@ -76,7 +76,7 @@ function RecipeDetails() {
       navigate(url);
       return;
     }
-    setItem('inProgress', [...inProgressRecipes, recipe])
+    setItem('inProgress', [...inProgressRecipes, newRecipe(recipe!)])
     navigate(url);
   }
 
@@ -146,6 +146,7 @@ function RecipeDetails() {
               <Link 
                 key={rec.id}
                 className={styles.recLink}
+                target='_blank'
                 to={pathname.includes('comidas') ? `/drinks/${rec.id}` : `/comidas/${rec.id}`}
               >
                 <div>

@@ -1,0 +1,36 @@
+.donePage {
+  align-items: center;
+  background-color: rgb(241, 241, 241);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  
+}
+
+.doneRecipesDiv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 0;
+  overflow: auto;
+  width: 100%;
+}
+
+.topBtnsDiv {
+  margin: 20px 0;
+  display: flex;
+  gap:10px
+}
+
+.topBtns {
+  background-color: brown;
+  border: 1px solid black;
+  color: white;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 17px;
+  font-weight: bold;
+  height: 30px;
+  width: 100px;
+}

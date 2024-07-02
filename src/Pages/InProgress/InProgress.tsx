@@ -27,8 +27,8 @@ function InProgress() {
 
   useEffect(() => {
     const { getItem } = useLoacalStorage();
-    const recipesInProgress: [] = getItem('inProgress');
-    const verify = recipesInProgress.find((item) => newRecipe(item).id === id)
+    const recipesInProgress: Recipe[] = getItem('inProgress');
+    const verify = recipesInProgress.find((item) => item.id === id)
     if (!verify) {
       alert('Receita não iniciada! Você será redirecionado(a) para a página da receita.')
       navigate(`/${param}/${id}`)
@@ -70,6 +70,30 @@ function InProgress() {
     }
     setChecked([...checked, ing])
     setItem('ingredientsInProgress', [...checked, ing])
+  }
+
+  const handleFinish = () => {
+    const { getItem, setItem } = useLoacalStorage();
+    const doneRecipes: Recipe[] = getItem('doneRecipes');
+    const doneDate = new Date().toLocaleDateString();
+    const formatedRecipe = newRecipe(recipe!, doneDate);
+    const verify = doneRecipes.find((recipe) => recipe.id === id);
+    
+    if (verify) {
+      navigate('/receitas-finalizadas');
+      return;
+    }
+    setItem('doneRecipes', [...doneRecipes, formatedRecipe]);
+    navigate('/receitas-finalizadas');
+  }
+
+  const isDisabled = () => {
+    const { getItem } = useLoacalStorage();
+    const ingredients = getItem('ingredientsInProgress');
+    const verify = ingredients.filter((item: string) => item.includes(`${recipeType}(${id})`)).length
+    return (
+      verify < recipeIngredients?.length!
+    )
   }
 
   return (
@@ -122,6 +146,17 @@ function InProgress() {
                 {recipe[ing]}: {recipe[recipeMeasures![index]]}
               </label>
             ))}
+          </div>
+          <div
+            className={styles.finishBtnDiv}
+          >
+            <button
+              className={styles.finishBtn}
+              onClick={handleFinish}
+              disabled={isDisabled()}
+            >
+              Finalizar receita
+            </button>
           </div>
         </>
       )}
