@@ -100,7 +100,7 @@ function RecipeDetails() {
             <div className={styles.favAndShare}>
               <div className={styles.btnsDiv}>
                 <button
-                  onClick={() => handleFavorite(id!, setIsFav, newRecipe(recipe))}
+                  onClick={() => handleFavorite(id!, setIsFav, newRecipe(recipe), dispatch)}
                   className={styles.topBtns}
                 >
                   {isFav ? <MdFavorite className={styles.icons}/> : <MdFavoriteBorder className={styles.icons}/>}

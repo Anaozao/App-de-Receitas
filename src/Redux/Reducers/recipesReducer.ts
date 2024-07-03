@@ -1,9 +1,10 @@
 import { AnyAction } from "redux"
-import { SET_LOADING, SET_RECIPES } from "../Actions"
+import { SET_FAVORITES, SET_LOADING, SET_RECIPES } from "../Actions"
 
 const INITIAL_STATE = {
   recipes: [],
-  loading: false
+  loading: false,
+  favorites: [],
 }
 
 const recipesReducer = (state = INITIAL_STATE, action: AnyAction) => {
@@ -17,7 +18,12 @@ const recipesReducer = (state = INITIAL_STATE, action: AnyAction) => {
       return {
         ...state,
         loading: action.payload
-      }  
+      }
+    case SET_FAVORITES:
+      return {
+        ...state,
+        favorites: action.payload
+      }
     default:
       return state;  
   }

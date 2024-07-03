@@ -1,7 +1,7 @@
 import useLoacalStorage from "../Hooks/useLoacalStorage";
+import { setFavorites } from "../Redux/Actions";
 import { DrinkType, MealType, RecType } from "../types";
 import { fetchByName } from "./API";
-
 
   type Id = string;
   type SetIsFav = React.Dispatch<React.SetStateAction<boolean>>;
@@ -33,9 +33,9 @@ export const newRecipe = (recipe: DrinkType | MealType, doneDate?: string) => {
   }
 }  
 
-export const handleFavorite = (id: Id, setIsFav: SetIsFav, recipe: Recipe ) => {
+export const handleFavorite = (id: Id, setIsFav: SetIsFav, recipe: Recipe, dispatch: any ) => {
   const { getItem, setItem } = useLoacalStorage()
-  const favorites: DrinkType[] | MealType[] = getItem('favorites')
+  const favorites: Recipe[] = getItem('favorites')
   const isFavorite = favorites.find((fav) => fav.id === id);
   
   
@@ -44,11 +44,13 @@ export const handleFavorite = (id: Id, setIsFav: SetIsFav, recipe: Recipe ) => {
     const newFavs = favorites
       .filter((fav) => fav.id !== id)
     setItem('favorites', newFavs )
+    dispatch(setFavorites(newFavs))
     return;
   }
   setIsFav(true)
   const item = recipe;
   setItem('favorites', [...favorites, item ])
+  dispatch(setFavorites([...favorites, item]))
 }
 
 export const getRecs = async (pathname: string, setRecomendations: React.Dispatch<React.SetStateAction<RecType[]>>) => {
@@ -78,7 +80,7 @@ export const handleShare = async (pathname: string, setCopyMessage: React.Dispat
 
 export const setIsFavorite = (id: string, setIsFav: SetIsFav) => {
   const { getItem } = useLoacalStorage();
-  const favorites: DrinkType[] | MealType[] = getItem('favorites');
+  const favorites: Recipe[] = getItem('favorites');
   const isFavorite = favorites.find((fav) => fav.id === id);
   if (isFavorite) {
     setIsFav(true)

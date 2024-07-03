@@ -1,0 +1,35 @@
+.card {
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px black;
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+  justify-content: center;
+  height: 380px;
+  width: 300px;
+}
+
+.image {
+  border-radius: 3px;
+  width: 250px;
+}
+
+.title {
+  font-size: 25px;
+}
+
+.buttonsDiv {
+  display: flex;
+  gap: 5px;
+}
+
+.buttons {
+  background: none;
+  border: none;
+}
+
+.icons {
+  cursor: pointer;
+  font-size: 30px;
+}

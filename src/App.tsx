@@ -5,6 +5,8 @@ import Layout from "./Components/Layout/Layout"
 import RecipeDetails from "./Pages/RecipeDetails/RecipeDetails"
 import InProgress from "./Pages/InProgress/InProgress"
 import DoneRecipes from "./Pages/DoneRecipes/DoneRecipes"
+import Profile from "./Pages/Profile/Profile"
+import Favorites from "./Pages/Favorites/Favorites"
 
 function App() {
 
@@ -24,6 +26,13 @@ function App() {
       <Route path="/receitas-finalizadas" element={<Layout />}>
         <Route index element={<DoneRecipes />}/>
       </Route>
+      <Route path="/perfil" element={<Layout />}>
+        <Route index element={<Profile />}/>
+      </Route>
+      <Route path="/favoritos" element={<Layout />}>
+        <Route index element={<Favorites />}/>
+      </Route>
+      <Route path="*" element={<h1>Página não encontrada</h1>}/>
     </Routes>
   )
 }

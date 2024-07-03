@@ -1,11 +1,13 @@
 import { fetchByCategory, fetchByFirstLetter, fetchByIngredient, fetchByName } from "../../Utils/API"
+import { Recipe } from "../../Utils/functions";
 import { Dispatch, DrinkType, MealType } from "../../types"
 
-export const LOGIN_ACTION = 'LOGIN_ACTION'
-export const HEADER_TITLE = 'HEADER_TITLE'
-export const SET_RECIPES = 'SET_RECIPES'
-export const SET_LOADING = 'SET_LOADING'
-export const SET_URL = 'SET_URL'
+export const LOGIN_ACTION = 'LOGIN_ACTION';
+export const HEADER_TITLE = 'HEADER_TITLE';
+export const SET_RECIPES = 'SET_RECIPES';
+export const SET_LOADING = 'SET_LOADING';
+export const SET_URL = 'SET_URL';
+export const SET_FAVORITES = 'SET_FAVORITES';
 
 
 export const setLoginInfos = (payload: string) => {
@@ -40,6 +42,13 @@ const setLoading = (payload: boolean) => {
 export const setUrl = (payload: string) => {
   return {
     type: SET_URL,
+    payload,
+  }
+}
+
+export const setFavorites = (payload: Recipe[]) => {
+  return {
+    type: SET_FAVORITES,
     payload,
   }
 }

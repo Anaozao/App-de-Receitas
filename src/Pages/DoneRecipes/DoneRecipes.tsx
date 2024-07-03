@@ -62,6 +62,7 @@ function DoneRecipes() {
           Drinks
         </button>
       </div>
+      {doneRecipes.length < 1 && <h1>Nenhuma receita feita!</h1>}
       <div className={styles.doneRecipesDiv}>
         {doneRecipes?.map((recipe) => (
           <DoneRecipeCard 

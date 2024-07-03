@@ -1,0 +1,8 @@
+.favoritesPage {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  height: 100%;
+  margin: 30px;
+}

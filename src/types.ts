@@ -1,6 +1,7 @@
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 import LoginForm from "./Components/LoginForm/LoginForm";
+import { Recipe } from "./Utils/functions";
 
 export type LoginForm = {
   email: string,
@@ -19,6 +20,7 @@ export type ReduxState = {
   recipesReducer: {
     recipes: MealType[] | DrinkType[]
     loading: boolean
+    favorites: Recipe[]
   }
 }
 
