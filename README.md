@@ -13,3 +13,4 @@ Para instalar o projeto em sua máquina:
 3 - dentro da pasta do projeto use o comando npm run dev
 
 para acessar o projeto sem instalar na máquina, acesse o link:
+https://app-de-receitas-delta.vercel.app/
