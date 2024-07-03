@@ -33,7 +33,7 @@ export const newRecipe = (recipe: DrinkType | MealType, doneDate?: string) => {
   }
 }  
 
-export const handleFavorite = (id: Id, setIsFav: SetIsFav, recipe: Recipe, dispatch: any ) => {
+export const handleFavorite = (id: Id, setIsFav: SetIsFav, recipe: Recipe, dispatch?: any ) => {
   const { getItem, setItem } = useLoacalStorage()
   const favorites: Recipe[] = getItem('favorites')
   const isFavorite = favorites.find((fav) => fav.id === id);

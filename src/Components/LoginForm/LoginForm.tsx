@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { setLoginInfos } from '../../Redux/Actions';
 import { useNavigate } from 'react-router-dom';
 import useLoacalStorage from '../../Hooks/useLoacalStorage';
-import { GiHotMeal } from 'react-icons/gi';
 
 function LoginForm() {
   const [formInfos, setFormInfos] = useState({email: '', password: ''})

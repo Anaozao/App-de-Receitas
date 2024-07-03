@@ -9,7 +9,7 @@ import { Recipe } from '../../Utils/functions';
 import { ReduxState } from '../../types';
 
 function Favorites() {
-  const {getItem, setItem} = useLoacalStorage();
+  const {getItem} = useLoacalStorage();
   const { pathname } = useLocation();
   const dispatch = useDispatch();
   const [favs, setFavs] = useState<Recipe[]>([])

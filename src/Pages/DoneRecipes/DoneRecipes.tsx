@@ -73,6 +73,7 @@ function DoneRecipes() {
             image={recipe.image!}
             tags={recipe.tags}
             title={recipe.title!}
+            type={recipe.type}
           />
         ))}
       </div>

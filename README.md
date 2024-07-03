@@ -1,30 +1,15 @@
-# React + TypeScript + Vite
+Este projeto utiliza das APIs 'https://www.themealdb.com/' e https://www.thecocktaildb.com/ para renderizar receitas de comidas e de drinks.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Nele você consegue buscar receitas por nome, categoria, ingrediente e primeira letra.
 
-Currently, two official plugins are available:
+Tem as funcionalidades de favoritar, marcar os ingredientes que já foram preparados, e finalizar a receita. Na tela de perfil você tem acesso aos favoritos e aos finalizados.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O app também possui tela de login (somente simulação, não é integrado com nenhum banco de dados) e a tela detalhes, que possui vídeo explicativo da receita (em inglês).
 
-## Expanding the ESLint configuration
+Para instalar o projeto em sua máquina:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1 - clone o repositório
+2 - dentro da pasta do projeto use o comando npm i
+3 - dentro da pasta do projeto use o comando npm run dev
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+para acessar o projeto sem instalar na máquina, acesse o link:

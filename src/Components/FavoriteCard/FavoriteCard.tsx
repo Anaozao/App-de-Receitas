@@ -55,7 +55,7 @@ function FavoriteCard({id, image, title, type, recipe}: FavoriteCardProps) {
           <IoShareSocial className={styles.icons}/>
         </button>
       </div>
-      {copyMessage}
+      {isFav && copyMessage}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import styles from './Layout.module.css'
 import { useEffect, useState } from 'react';

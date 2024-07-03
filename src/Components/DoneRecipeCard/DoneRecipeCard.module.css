@@ -12,6 +12,14 @@
   width: 300px;
 }
 
+.link {
+  align-items: center;
+  display: flex;
+  color: black;
+  flex-direction: column;
+  text-decoration: none;
+}
+
 .image {
   border-radius: 10px;
   width: 250px;
