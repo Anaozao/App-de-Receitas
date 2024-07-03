@@ -1,4 +1,4 @@
-import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
+import { MdFavorite } from 'react-icons/md';
 import styles from './FavoriteCard.module.css';
 import useLoacalStorage from '../../Hooks/useLoacalStorage';
 import { useEffect, useState } from 'react';
