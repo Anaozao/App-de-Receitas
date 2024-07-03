@@ -1,5 +1,6 @@
 .profilePage {
   align-items: center;
+  background-color: rgb(241, 241, 241);
   display: flex;
   flex-direction: column;
   padding: 30px;

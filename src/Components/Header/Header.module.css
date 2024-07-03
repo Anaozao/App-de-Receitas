@@ -42,7 +42,7 @@
 .headerBottom {
   background-color: rgb(255, 187, 0);
   border-top: 1px solid black;
-  box-shadow: 2px 2px 5px black;
+  box-shadow: 1px 1px 5px black;
   height: 100%;
 }
 

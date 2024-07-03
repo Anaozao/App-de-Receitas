@@ -61,7 +61,12 @@ function SearchBar() {
         </div>
         <div className={styles.radiosContainer}>
           <div className={styles.radioDiv}>
-            <label htmlFor="name-radio">Nome</label>
+            <label 
+              className={styles.radioLabel}
+              htmlFor="name-radio"
+            >
+              Nome
+            </label>
             <input
               onChange={ handleChange }
               type="radio"
@@ -74,7 +79,12 @@ function SearchBar() {
           </div>
 
           <div className={styles.radioDiv}>
-            <label htmlFor="ingredient-radio">Ingrediente</label>
+            <label
+              className={styles.radioLabel}
+              htmlFor="ingredient-radio"
+            >
+              Ingrediente
+            </label>
             <input
               onChange={ handleChange }
               type="radio"
@@ -86,7 +96,12 @@ function SearchBar() {
           </div>
 
          <div className={styles.radioDiv}>
-          <label htmlFor="letter-radio">Letra</label>
+            <label
+              className={styles.radioLabel}
+              htmlFor="letter-radio"
+            >
+              Letra
+            </label>
             <input
               onChange={ handleChange }
               type="radio"

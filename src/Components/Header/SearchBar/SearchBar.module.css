@@ -37,7 +37,14 @@
   background-color: brown;
   border: 1px solid black;
   border-radius: 5px;
+  color: white;
   cursor: pointer;
+  font-size: 17px;
+  font-weight: 700;
   height: 25px;
   width: 100px;
+}
+
+.radioLabel {
+  font-size: 18px;
 }

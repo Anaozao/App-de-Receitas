@@ -1,4 +1,5 @@
 .favoritesPage {
+  background-color: rgb(241, 241, 241);
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
